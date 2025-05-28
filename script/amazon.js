@@ -25,7 +25,7 @@
 // }];
 
 let productHTML = '';
-product.forEach((products) => {
+products.forEach((products) => {
     productHTML += `<div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
@@ -49,7 +49,7 @@ product.forEach((products) => {
           </div>
 
           <div class="product-price">
-            $${(products.priceCent/100).toFixed(2)}
+            $${(products.priceCents/100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
@@ -74,7 +74,8 @@ product.forEach((products) => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart"
+           data-product-id = "${products.id}">
             Add to Cart
           </button>
         </div>`
@@ -84,3 +85,35 @@ console.log(productHTML);
 
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
+document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
+  button.addEventListener('click', () =>{
+    const productId = button.dataset.productsId;
+    
+    let matchingItem;
+    cart.forEach((item) =>{
+      if(productId === item.productId){
+        matchingItem = item;
+      }
+
+    });
+    if(matchingItem){
+      matchingItem.quantity += 1
+    }else{
+      cart.push({
+        productId : productId,
+        quantity : 1
+      });
+    }
+   let cartQuantity = 0;
+   cart.forEach((item) =>{
+     cartQuantity += item.quantity;
+   });
+   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+    
+    
+    
+    
+    
+   
+  });
+});

@@ -1,0 +1,16 @@
+/*
+
+Steps:
+1. check if the product is already in the cart
+2. If it is in the cart, increase the quantity.
+3. If it's not in the cart add it to the cart.
+
+1. Calculate the quantity
+2. Put the quantity on the page
+const cart = [{
+
+}]
+
+
+
+*/
