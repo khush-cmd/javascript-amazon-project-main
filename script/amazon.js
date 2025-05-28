@@ -25,16 +25,16 @@
 // }];
 
 let productHTML = '';
-product.forEach((product) => {
+product.forEach((products) => {
     productHTML += `<div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
-              src="${product.image}">
+              src="${products.image}">
           </div>
 
           
           <div class="product-name limit-text-to-2-lines">
-            ${product.name}
+            ${products.name}
           </div>
 
         
@@ -42,14 +42,14 @@ product.forEach((product) => {
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.stars * 10}.png">
+              src="images/ratings/rating-${products.rating.stars * 10}.png">
             <div class="product-rating-count link-primary">
-              ${product.rating.count}
+              ${products.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-            $${(product.priceCent/100).toFixed(2)}
+            $${(products.priceCent/100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
