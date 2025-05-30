@@ -56,8 +56,23 @@
       </div>
     </div>
 
-    <script src="data/cart.js"></script>
+    <!-- <script src="data/cart.js"></script> -->
     <script src="data/products.js"></script>
-    <script src="script/amazon.js"></script>
+    <script type="module" src="script/amazon.js"></script>
+     <!-- All these file can cause naming conflicts 
+      if we have use cart in one file then we can't use cart in other file 
+    1. Combine all the file together into 1 big file 
+    2. Run all code 
+
+    Modules : = a better way to orgnize our code 
+     Create a Module 
+     1. Create a files 
+      2. Don't load the file with <script> </script> 
+     Any variable we create inside the file, will be contained inside the file 
+     
+     Get a varible out of a file 
+     1. Add type="Module" attribute
+     2. Export
+     3. Import  -->
   </body>
 </html>

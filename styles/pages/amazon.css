@@ -145,12 +145,18 @@
 }
 
 .added-to-cart img {
-  height: 20px;
+  height: 3px;
   margin-right: 5px;
+
+
 }
 
 .add-to-cart-button {
   width: 100%;
   padding: 8px;
   border-radius: 50px;
+
+}
+.js-message {
+  font-size: 33px;
 }

@@ -24,7 +24,15 @@
 //     priceCent : 799
 // }];
 
+
+import {cart as myCart} from '../data/cart.js';
+
+
+// to avoid naming conflicts
+ const cart = [];
+
 let productHTML = '';
+
 products.forEach((products) => {
     productHTML += `<div class="product-container">
           <div class="product-image-container">
@@ -53,7 +61,7 @@ products.forEach((products) => {
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class = "js-quantity-selector-${products.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -70,10 +78,10 @@ products.forEach((products) => {
           <div class="product-spacer"></div>
 
           <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
+          Added
+          
           </div>
-
+          <div class='js-message'></div>
           <button class="add-to-cart-button button-primary js-add-to-cart"
            data-product-id = "${products.id}">
             Add to Cart
@@ -86,9 +94,23 @@ console.log(productHTML);
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
-  button.addEventListener('click', () =>{
-    const productId = button.dataset.productsId;
+
+  button.addEventListener('click',() =>{
+    const messageContainer = button.parentElement.querySelector('.js-message');
+    messageContainer.innerHTML = ` <img src="images/icons/checkmark.png" alt="Checkmark"> Added`;
+    messageContainer.style.display = 'block';
     
+    setTimeout(function(){
+      messageContainer.style.display = 'none';
+    },2000);
+  });
+});
+
+document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
+  button.addEventListener('click', () =>{
+    const productId = button.dataset.productId;
+    const selectElement = document.querySelector(`.js-quantity-selector-${productId}`);
+    const quantity = Number(selectElement.value);
     let matchingItem;
     cart.forEach((item) =>{
       if(productId === item.productId){
@@ -97,11 +119,11 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
 
     });
     if(matchingItem){
-      matchingItem.quantity += 1
+      matchingItem.quantity += quantity;
     }else{
       cart.push({
         productId : productId,
-        quantity : 1
+        quantity : quantity
       });
     }
    let cartQuantity = 0;
