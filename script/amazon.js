@@ -25,8 +25,8 @@
 // }];
 
 
-import {cart} from '../data/cart.js';
-
+import {cart , addToCart} from '../data/cart.js';
+import {products} from '../data/products.js'
 let productHTML = '';
 
 products.forEach((products) => {
@@ -79,10 +79,10 @@ products.forEach((products) => {
           </div>
           <div class='js-message'></div>
           <button class="add-to-cart-button button-primary js-add-to-cart"
-           data-product-id = "${products.id}">
-            Add to Cart
+          data-product-id = "${products.id}">
+          Add to Cart
           </button>
-        </div>`
+          </div>`
 });
 
 console.log(productHTML);
@@ -90,7 +90,7 @@ console.log(productHTML);
 document.querySelector('.js-products-grid').innerHTML = productHTML;
 
 document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
-
+  
   button.addEventListener('click',() =>{
     const messageContainer = button.parentElement.querySelector('.js-message');
     messageContainer.innerHTML = ` <img src="images/icons/checkmark.png" alt="Checkmark"> Added`;
@@ -101,39 +101,24 @@ document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
     },2000);
   });
 });
-function addToCart(productId){
-let matchingItem;
-    cart.forEach((item) =>{
-      if(productId === item.productId){
-        matchingItem = item;
-      }
 
-    });
-    if(matchingItem){
-      matchingItem.quantity += quantity;
-    }else{
-      cart.push({
-        productId : productId,
-        quantity : quantity
+    function updateCartQuantity(){
+      let cartQuantity = 0;
+      cart.forEach((item) =>{
+        cartQuantity += item.quantity;
       });
+      document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+      
     }
-}
+    
+  
 document.querySelectorAll('.js-add-to-cart').forEach((button) =>{
   button.addEventListener('click', () =>{
     const productId = button.dataset.productId;
     const selectElement = document.querySelector(`.js-quantity-selector-${productId}`);
     const quantity = Number(selectElement.value);
-    addToCart(productId);
-   let cartQuantity = 0;
-   cart.forEach((item) =>{
-     cartQuantity += item.quantity;
-   });
-   document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-    
-    
-    
-    
-    
+    addToCart(productId,quantity);
+    updateCartQuantity(); 
    
   });
 });
