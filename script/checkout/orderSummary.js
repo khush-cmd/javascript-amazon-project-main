@@ -13,7 +13,7 @@ import {getProduct, products} from '../../data/products.js';
 import {formateCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {getDeliveryOption,deliveryOptions} from '../../data/deliveryOption.js';
-
+import { renderPaymentSummary } from './paymentSummary.js';
 
 
 
@@ -35,7 +35,7 @@ cart.forEach((cartItem) =>{
     
     const today = dayjs();
     const deliveryDate = today.add(
-        deliveryOptions.deliveryDays,
+        deliveryOption.deliveryDays,
         'days'
     );
         const dateString = deliveryDate.format(
@@ -131,7 +131,7 @@ cart.forEach((cartItem) =>{
     link.addEventListener('click',()=>{
     const productId = link.dataset.productId;
     removeFromCart(productId);
-
+    renderPaymentSummary();
 
     const container = document.querySelector(
     `.js-cart-item-container-${productId}`
@@ -142,8 +142,10 @@ cart.forEach((cartItem) =>{
 
     document.querySelectorAll('.js-delivery-option').forEach((element) =>{
     element.addEventListener('click',()=>{
-    const {productId,deliveryOptionsId} = element.dataset;// this is shorthand property
-    updateDeliveryOption(productId,deliveryOptionsId);
+    const {productId,deliveryOptionId} = element.dataset;// this is shorthand property
+    console.log('Selected product:', productId, 'Option:', deliveryOptionId);
+    
+    updateDeliveryOption(productId,deliveryOptionId);
     
     });
     });

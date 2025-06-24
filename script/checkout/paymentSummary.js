@@ -52,7 +52,7 @@ export function renderPaymentSummary(){
             <div class="payment-summary-row subtotal-row">
                 <div>Total before tax:</div>
                 <div class="payment-summary-money">$${formateCurrency(totalBeforeTaxCents)}
-                /div>
+                </div>
             </div>
 
             <div class="payment-summary-row">
@@ -71,5 +71,5 @@ export function renderPaymentSummary(){
                 Place your order
             </button>
     `;
+    document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 }
-document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
