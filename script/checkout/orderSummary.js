@@ -9,10 +9,10 @@
 
 // 1. Save the data
 import {cart,removeFromCart,updateDeliveryOption} from '../../data/cart.js';
-import {products} from '../../data/products.js';
+import {getProduct, products} from '../../data/products.js';
 import {formateCurrency} from '../utils/money.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
-import {deliveryOptions} from '../../data/deliveryOption.js';
+import {getDeliveryOption,deliveryOptions} from '../../data/deliveryOption.js';
 
 
 
@@ -26,20 +26,12 @@ export function renderOrderSummary(){
     let cartSummaryHTML = '';
 cart.forEach((cartItem) =>{
     const productId = cartItem.productId;
-    let matchingProduct;
-    products.forEach((products) =>{
-        if(products.id === productId){
-            matchingProduct = products;
-            
-        }
-    });
-    const deliveryOptionsId = cartItem.deliveryOptionsId;
-    let deliveryOption;
-    deliveryOptions.forEach((option) =>{
-        if(option.id === deliveryOptionsId){
-            deliveryOption = option;
-        }
-    });
+
+    
+    const matchingProduct = getProduct(productId);
+    const deliveryOptionId = cartItem.deliveryOptionId;    
+    let deliveryOption = getDeliveryOption(deliveryOptionId);
+   
     
     const today = dayjs();
     const deliveryDate = today.add(
@@ -152,7 +144,6 @@ cart.forEach((cartItem) =>{
     element.addEventListener('click',()=>{
     const {productId,deliveryOptionsId} = element.dataset;// this is shorthand property
     updateDeliveryOption(productId,deliveryOptionsId);
-        
     
     });
     });
