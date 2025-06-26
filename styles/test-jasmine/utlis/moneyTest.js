@@ -1,4 +1,4 @@
-import { formateCurrency } from "../../script/utils/money.js";
+import { formateCurrency } from "../../../script/utils/money.js";
 // create a group of specs (often called a suite).
 // calls to describe can be nested with other calls to compose your suite as a tree
 // describe (description , specDefinitions)
