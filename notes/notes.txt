@@ -1,0 +1,7 @@
+unit test = testing 1 piece of the code just like we test addtoCart 
+if we are required to test a complete page like : Intergation test
+Intergation test = tests many units/pieces of code working together
+
+
+Hook let us run some code for each test matlab hum code ko share kar sakte hai
+like beforeEach() : it will run this function before each of are test
