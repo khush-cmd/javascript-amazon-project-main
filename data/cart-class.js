@@ -6,19 +6,19 @@ import { loadFromStorage } from "./cart.js";
 
 class Cart {
     cartItems;
-    localStoragekey;
+    #localStoragekey; // private property 
 
     constructor(localStoragekey){
-    this.localStoragekey= localStoragekey;
+    this.#localStoragekey= localStoragekey;
    
-    this.loadFromStorage();
+    this.#loadFromStorage();
 
     }
 
 
 
-    loadFromStorage(){
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStoragekey));
+    #loadFromStorage(){
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStoragekey));
 if(!this.cartItems){
 
   this.cartItems = [{
@@ -33,7 +33,7 @@ if(!this.cartItems){
   }
 }
     saveToStorage(){
-      localStorage.setItem(this.localStoragekey,JSON.stringify(this.cartItems));
+      localStorage.setItem(this.#localStoragekey,JSON.stringify(this.cartItems));
     }
     addToCart(productId,quantity){
       let matchingItem;
@@ -84,7 +84,7 @@ const cart = new Cart('cart-oop'); // this to genrate the object using the class
 const businessCart = new Cart('cart-business');
 
 
-
+                     
 
 
 

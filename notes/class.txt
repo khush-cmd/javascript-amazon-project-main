@@ -27,12 +27,17 @@ What is localStoragekey ?
 localStorage is letting us choose the key used in localStorage dynamically from outside the class
 
 }
+ we used #localStoragekey everywhere because by that when we working in the team no one can change it mean (private)
+
 
 
 Benfits of class : 
 1 . A class look like the object that it generate but more cleaner
 2. class have extra features like constructor
 3. constructor let us put this setup code inside the class
+4. A class lets us create private property and method with the use of (#) in front
+
+
 
 Detail about constructor : 1 . has to named "constructor"
 2. should not return anything from constructor
