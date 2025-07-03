@@ -62,7 +62,7 @@ cart.forEach((cartItem) =>{
     ${matchingProduct.name}
     </div>
     <div class="product-price">
-    $${formateCurrency(matchingProduct.priceCents)}
+    ${matchingProduct.getPrice()}
     </div>
     <div class="product-quantity
     js-product-quantity-${matchingProduct.id}">
@@ -145,7 +145,6 @@ cart.forEach((cartItem) =>{
     document.querySelectorAll('.js-delivery-option').forEach((element) =>{
     element.addEventListener('click',()=>{
     const {productId,deliveryOptionId} = element.dataset;// this is shorthand property
-    console.log('Selected product:', productId, 'Option:', deliveryOptionId);
     
     updateDeliveryOption(productId,deliveryOptionId);
     

@@ -87,8 +87,6 @@ businessCart.loadFromStorage();
 
 // Why do we use oop => tries to represent a real word jaise ki real maine cart hoti hai usme se add  and remove kar sakte (shopping cart  )
 
-console.log(cart);
-console.log(businessCart);
 
 // instead of copying the object every time just make the function of the same product and use it as many as time you want 
 // just pass a parameter in the function like i have passed (localStoragekey) and use it in the plae of localStorage to make the seprate key

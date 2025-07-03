@@ -39,5 +39,10 @@ Benfits of class :
 
 
 
+Convert a object into class
+important : .map(()=>{
+    is used to loop through an array and though each value it run a function
+})
+
 Detail about constructor : 1 . has to named "constructor"
 2. should not return anything from constructor
