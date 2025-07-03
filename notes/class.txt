@@ -1,0 +1,38 @@
+object oriented programming = organzing our code into object (tries to represent the real world)
+
+now after making object we are moving to class 
+Class = object generator
+console.log(businessCart instanceof Cart); 
+this is check if the businessCart is genrated from the Cart or in other word we can say that is the instance of the class
+
+
+class Cart{   // create a class keyword
+    // move the properties 
+    cartItems = undefined;  // modern version // and remove undefined and use semicolon it stay the same
+    constructor(){
+
+        this.cartItems = undefined;  // this is the older version by defining the property inside the constructor
+
+    }
+
+    3. Methos : loadFromStorage(){
+        this.cartItems = JSON.parse(localStorage,getItem()this.localStoragekey)
+    }
+    we can use a many as method as we want
+    What is the Method ?
+    A method is an action that an object or class can perform 
+
+
+What is localStoragekey ?
+localStorage is letting us choose the key used in localStorage dynamically from outside the class
+
+}
+
+
+Benfits of class : 
+1 . A class look like the object that it generate but more cleaner
+2. class have extra features like constructor
+3. constructor let us put this setup code inside the class
+
+Detail about constructor : 1 . has to named "constructor"
+2. should not return anything from constructor
