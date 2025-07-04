@@ -45,4 +45,12 @@ important : .map(()=>{
 })
 
 Detail about constructor : 1 . has to named "constructor"
-2. should not return anything from constructor
+2. should not return anything from constructor  
+
+
+1 . super
+2.method overriding
+3. Polymorphism
+
+INHERTAINCE : 
+1. what is inhertaince ? ans : inhertiance allows one class which is child to reuse properites and method of another class (parent)
