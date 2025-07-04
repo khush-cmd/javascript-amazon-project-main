@@ -54,3 +54,36 @@ Detail about constructor : 1 . has to named "constructor"
 
 INHERTAINCE : 
 1. what is inhertaince ? ans : inhertiance allows one class which is child to reuse properites and method of another class (parent)
+
+
+
+
+
+
+
+
+More detail about this : this let an object access it own properties (this will point to outer object)
+In Js you can use (this) anywhere // this actually equal to window object of the computer when it doesn't have any object
+
+Summary of this : 1 . inside the method , "this" points to the outer object example 
+const object2 = {
+    method(){
+        console.log(this);
+    }
+}
+2. inside a function this = undefined But we can change it with the help of .call()
+function logThis(){
+    console.log(this);
+}
+logThis.call('hello');
+
+3. Arrow function , do not change the value of 'this' like funciton
+console.log(this);
+[1,2,3].forEach(()=>{
+    console.log(this);
+    // it will still remain undefined
+})
+
+Build -IN classes :
+classes that are provided by the language
+1. new Date(): generate an object that represents the current date and time also 

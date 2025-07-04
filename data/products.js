@@ -56,6 +56,18 @@ class Clothing extends Product  {
   }
 }
 
+// const date = new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+
+console.log(this); // this actually equal to window object of the computer when it doesn't have any object
+
+function logThis(){
+  console.log(this);
+}
+logThis(); // undefined
+logThis.call('hello');// .call run this function
+
 
 export const products = [
   {
